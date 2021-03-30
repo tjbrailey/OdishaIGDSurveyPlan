@@ -1,4 +1,4 @@
 # OdishaIGDSurveyPlan
 
 ### Code to run
-runGitHub(repo = "OdishaIGDSurveyPlan", username = "tjbrailey", ref = "main")
+shiny::runGitHub(repo = "OdishaIGDSurveyPlan", username = "tjbrailey", ref = "main")
