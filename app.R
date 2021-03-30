@@ -224,7 +224,7 @@ server <-
             color = NA
           ) +
           scale_fill_manual(
-            values = rep("lightblue", 54), 
+            values = rep("lightblue", 55), 
             guide = FALSE
           ) + 
           scale_color_manual(
