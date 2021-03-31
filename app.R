@@ -55,10 +55,13 @@ dat2 <-
     month, 
     mg_surv, 
     unique_mg,
-    measurement_sequence
+    measurement_sequence,
+    sample_villages
     ) %>% 
   dplyr::ungroup() %>% 
   dplyr::select(
+    district, 
+    tehsil_id, 
     gp_id, 
     x_cent, 
     y_cent, 
@@ -67,7 +70,8 @@ dat2 <-
     month, 
     mg_surv, 
     unique_mg,
-    measurement_sequence
+    measurement_sequence,
+    sample_villages
     ) %>% 
   as.data.frame(.)
 
@@ -93,6 +97,7 @@ ui <-
         
         # Month slider
         sliderInput(
+          width = "200%",
           inputId = "month", "Month", 
           min = 5,
           max = 22, 
@@ -109,12 +114,12 @@ ui <-
         # Location of points
         fluidRow(
           column(
-            width = 10,
+            width = 12,
             h4("Points near click"),
             verbatimTextOutput("click_info")
           ),
           column(
-            width = 10,
+            width = 12,
             h4("Brushed points"),
             verbatimTextOutput("brush_info")
           )
@@ -122,12 +127,7 @@ ui <-
       ),
       
       # Main panel for displaying outputs
-      mainPanel(
-        plotOutput(
-          "beep", 
-          width = "100%", 
-          height = "400px"
-        ), 
+      mainPanel( 
         plotOutput(
           "boop",
           click = "plot1_click", 
@@ -168,6 +168,7 @@ server <-
                 measurement_group, 
                 month,
                 measurement_sequence,
+                sample_villages,
                 x_cent, 
                 y_cent
               )
@@ -192,6 +193,7 @@ server <-
                 measurement_group, 
                 month,
                 measurement_sequence,
+                sample_villages,
                 x_cent, 
                 y_cent
               )
